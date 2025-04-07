@@ -1,7 +1,7 @@
-<H3>ENTER YOUR NAME</H3>
-<H3>ENTER YOUR REGISTER NO.</H3>
+<H3>ENTER YOUR NAME:RENUSRI NARAHARASHETTY</H3>
+<H3>ENTER YOUR REGISTER NO.:212223240139</H3>
 <H3>EX. NO.1</H3>
-<H3>DATE</H3>
+<H3>DATE:07/04/2025</H3>
 <H1 ALIGN =CENTER> Introduction to Kaggle and Data preprocessing</H1>
 
 ## AIM:
@@ -37,12 +37,65 @@ STEP 5:Normalizing the data<BR>
 STEP 6:Splitting the data into test and train<BR>
 
 ##  PROGRAM:
-TYPE YOUR CODE HERE
+```
+from google.colab import files
+import pandas as pd
+import io
+from sklearn.preprocessing import StandardScaler
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+df=pd.read_csv('/content/sample_data/california_housing_train.csv')
+print(df)
+print("\n")
+
+x=df.iloc[:,:-1].values
+print(x)
+print("\n")
+
+y=df.iloc[:,-1].values
+print(y)
+print("\n")
+
+print(df.isnull().sum())
+print("\n")
+
+df.fillna(df.mean().round(1),inplace=True)
+print(df.isnull().sum())
+print("\n")
+
+y=df.iloc[:,-1].values
+print(y)
+print("\n")
+
+df.duplicated()
+print(df['population'].describe())
+print("\n")
+
+scaler=MinMaxScaler()
+df1=pd.DataFrame(scaler.fit_transform(df))
+print(df1)
+print("\n")
+
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2)
+print(x_train)
+print(len(x_train))
+print("\n")
+print(x_test)
+print(len(x_test))
+```
 
 
 ## OUTPUT:
-SHOW YOUR OUTPUT HERE
+![image](https://github.com/user-attachments/assets/a11e19e6-8e4b-4834-ac92-baaff84e1ab8)
 
+![image](https://github.com/user-attachments/assets/d0987bdc-8cbf-4a52-b443-3387c101d711)
+
+![image](https://github.com/user-attachments/assets/4cc6091a-6555-47c0-9920-57dd7a47d3c8)
+
+![image](https://github.com/user-attachments/assets/b47e5024-c17a-47e9-8074-0818e454a7dc)
+
+![image](https://github.com/user-attachments/assets/1f1b68f8-cd94-4099-8335-079c7c39feaa)
 
 ## RESULT:
 Thus, Implementation of Data Preprocessing is done in python  using a data set downloaded from Kaggle.
